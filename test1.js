@@ -1,18 +1,23 @@
-var age = parseInt(prompt("Your age", "0"));
-if (age === 0) {
-    console.log("enter something");
-} else if (age < 18) {
-    console.log("too young");
-} else if (age >= 80) {
-    console.log("too old");
-} else if (age >= 18 || age <= 78) {
-    var name = prompt("Your name", "name");
-    if (name === "" || name === null) {
-        console.log("you need to enter your name");
+document.querySelector('submit').onclick = autorizationClick;
+
+function autorizationClick(){
+
+    let nameValue = document.querySelector(".name").value;
+    let ageValue = document.querySelector(".age").value;
+
+if (ageValue === 0) {
+    alert("enter something");
+} else if (ageValue < 18) {
+    alert("too young");
+} else if (ageValue >= 80) {
+    alert("too old");
+} else if (ageValue >= 18 || age <= 78) {
+    if (nameValue === "" || nameValue === null) {
+        alert("you need to enter your name");
     } else {
-    console.log("Welcome " + name +"!"); 
+        alert("Welcome " + nameValue +"!"); 
     }
 } else {
-    console.log("its may be a number")
+    alert("its may be a number")
 }
-
+}
