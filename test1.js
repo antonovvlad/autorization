@@ -1,23 +1,45 @@
-document.querySelector('submit').onclick = autorizationClick;
+const form = document.querySelector('#myForm');
 
-function autorizationClick(){
-
-    let nameValue = document.querySelector(".name").value;
-    let ageValue = document.querySelector(".age").value;
-
-if (ageValue === 0) {
-    alert("enter something");
-} else if (ageValue < 18) {
-    alert("too young");
-} else if (ageValue >= 80) {
-    alert("too old");
-} else if (ageValue >= 18 || age <= 78) {
-    if (nameValue === "" || nameValue === null) {
-        alert("you need to enter your name");
-    } else {
-        alert("Welcome " + nameValue +"!"); 
-    }
-} else {
-    alert("its may be a number")
+function getValue(selector) {
+  return document.querySelector(selector);
 }
+
+function isValidAge(ageValue) {
+  if (ageValue === '') {
+    return false;
+  }
+  const age = Number(ageValue);
+  if (isNaN(age)) {
+    return false;
+  }
+  if (age < 18 || age >= 80) {
+    return false;
+  }
+  return true;
 }
+
+function isValidName(nameValue) {
+  if (nameValue === '' || nameValue === null) {
+    return false;
+  }
+  return true;
+}
+
+const nameInput = getValue('#name');
+const ageInput = getValue('#age');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const nameValue = nameInput.value;
+  const ageValue = ageInput.value;
+
+  if (isValidAge(ageValue) && isValidName(nameValue)) {
+    window.location.href = 'https://www.youtube.com/';
+  } else {
+    alert("you have a mitakes in your form")
+  }
+ 
+  nameInput.value = nameValue;
+  ageInput.value = ageValue;
+});
