@@ -1,26 +1,24 @@
 const form = document.querySelector('#myForm');
 
-function getValue(selector) {
-  return document.querySelector(selector);
-}
+ const getValue = (selector) => document.querySelector(selector);
 
-function isValidAge(ageValue) {
+ const isValidAge = (ageValue) => {
   if (ageValue === '') {
-    return false;
+    return false, window.alert(RESULT_FALSE_AGE_MUST_BE_A_NUM);
   }
   const age = Number(ageValue);
   if (isNaN(age)) {
-    return false;
+    return false, window.alert(RESULT_FALSE_AGE_MUST_BE_A_NUM);
   }
   if (age < 18 || age >= 80) {
-    return false;
+    return false, window.alert(RESULT_FALSE_WRONG_AGE);
   }
   return true;
 }
 
-function isValidName(nameValue) {
+const isValidName = (nameValue) => {
   if (nameValue === '' || nameValue === null) {
-    return false;
+    return false, window.alert(RESULT_FALSE_NAME_MUST_BE_A_STR);
   }
   return true;
 }
@@ -28,16 +26,16 @@ function isValidName(nameValue) {
 const nameInput = getValue('#name');
 const ageInput = getValue('#age');
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const nameValue = nameInput.value;
   const ageValue = ageInput.value;
 
   if (isValidAge(ageValue) && isValidName(nameValue)) {
-    window.location.href = 'https://www.youtube.com/';
+    window.location.href = YOTUBE_REDIRECT;
   } else {
-    alert("you have a mitakes in your form")
+    alert(GENERAL_MISTAKE)
   }
  
   nameInput.value = nameValue;
